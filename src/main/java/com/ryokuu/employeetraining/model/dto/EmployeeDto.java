@@ -5,6 +5,7 @@ package com.ryokuu.employeetraining.model.dto;
  */
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ryokuu.employeetraining.model.validation.InsertValidationGroup;
 import com.ryokuu.employeetraining.model.validation.UpdateValidationGroup;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -32,7 +33,7 @@ public class EmployeeDto {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Timestamp deletedAt;
 
-    @NotNull(message = "Id is mandatory", groups = UpdateValidationGroup.class)
+    @NotNull(message = "Id is mandatory", groups = {UpdateValidationGroup.class, InsertValidationGroup.class})
     private Integer id;
 
     @NotBlank(message = "Name is mandatory")

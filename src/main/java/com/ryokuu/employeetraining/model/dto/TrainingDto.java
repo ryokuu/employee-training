@@ -5,6 +5,9 @@ package com.ryokuu.employeetraining.model.dto;
  */
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ryokuu.employeetraining.model.validation.InsertValidationGroup;
+import com.ryokuu.employeetraining.model.validation.UpdateValidationGroup;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,6 +30,7 @@ public class TrainingDto {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Timestamp deletedAt;
 
+    @NotNull(message = "Id is mandatory", groups = {UpdateValidationGroup.class, InsertValidationGroup.class})
     private Integer id;
 
     private String trainer;

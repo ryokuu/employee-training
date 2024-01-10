@@ -2,6 +2,7 @@ package com.ryokuu.employeetraining.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ryokuu.employeetraining.model.validation.UpdateValidationGroup;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,10 +33,13 @@ public class TrainingEmployeeDto {
     @NotNull(message = "Id is mandatory", groups = UpdateValidationGroup.class)
     private Integer id;
 
+    @NotNull(message = "date of training is required")
     private LocalDateTime dateOfTraining;
 
+    @Valid
     private EmployeeDto employee;
 
+    @Valid
     private TrainingDto training;
 
 
